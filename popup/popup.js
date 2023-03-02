@@ -3,100 +3,27 @@ let form = document.forms.audioStreamSettings;
 let inputAudioStreamURL = form.elements.audioStreamURL;
 let inputAudioChunksLimit = form.elements.audioChunksLimit;
 let btnStartStream = form.elements.startStream;
-let streamStatus = btnStartStream.value;
-
-const context = new (window.AudioContext || window.webkitAudioContext)();
-
-var delayTime = 0;
-var init = 0;
-var audioStack = [];
-var nextTime = 0;
+//let streamStatus = btnStartStream.value;
+var otherWindows = chrome.extension.getBackgroundPage();
 
 //Start to play audio when click to the button "Play audio stream:"
 btnStartStream.addEventListener('click', () => {
-	alert("Button clicked");
+	otherWindows.startStreamAudio(inputAudioStreamURL.value);
 	changeStreamStatus();
 	let audioStreamURL = inputAudioStreamURL.value;
 	let audioChunksLimit = inputAudioChunksLimit.value;
-	(async () => {
-		let response = await fetch(audioStreamURL);
-		const reader = response.body.getReader();
 
-		let receivedLength = 0; // received that many bytes at the moment
-		
-		let audioDataChunks = new Uint8Array(reader.result); // array of received binary chunks (comprises the body)
-		//for (let step = 0; step < audioChunksLimit; step++) {
-		while (streamStatus == "on") {
-			const {done, value} = await reader.read();
-			//if (done) {
-			//break;
-			//}
-			let audioChunk = new Uint8Array(value);
-			console.log('Audio chunk:');
-			console.log(audioChunk);
-
-			//Removing header from every piece of audio data
-			adpcmRawChunk = audioChunk.slice(32,544);
-			console.log('Adpcm raw chunk:');
-			console.log(adpcmRawChunk);
-
-			//Device streams ADPCM audio, convert every piece to PCM
-			var pcmChunk = decodeAdpcm(adpcmRawChunk);
-
-			
-			audioStack.push(pcmChunk);
-			console.log("audioStack");
-			console.log(audioStack);
-			if ((init!=0) || (audioStack.length > 10)) { // make sure we put at least 10 chunks in the buffer before starting
-				init++;
-				scheduleBuffers();
-			}
-			receivedLength += audioChunk.length;
-			console.log(`Received ${receivedLength}`);
-		}
-		
-
-	})()
 })
-function scheduleBuffers() {
-	
-	while (audioStack.length) {
-		var audioBuffer = audioStack.shift();
-		
-		var buffer = context.createBuffer(
-				1,
-				audioBuffer.length,
-				8000
-			);
-		var bufferSource = context.createBufferSource();
 
-			const nowBuffering = buffer.getChannelData(0);
-			for (let i = 0; i < buffer.length; i++) {
-				nowBuffering[i] = audioBuffer[i];
-			}
-			console.log("nowBuffering");
-			console.log(nowBuffering);	
-			// set the buffer in the AudioBufferSourceNode
-			console.log("bufferSource");
-			console.log(bufferSource);
-			bufferSource.buffer = buffer;
-
-		bufferSource.connect(context.destination);
-		if (nextTime == 0)
-			nextTime = context.currentTime + 0.05;  /// add 50ms latency to work well across systems - tune this if you like
-		bufferSource.start(nextTime);
-		nextTime+=bufferSource.buffer.duration; // Make the next buffer wait the length of the last buffer before being played
-	};
-}
 function changeStreamStatus () {
+	let streamStatus = otherWindows.streamStatus
+	console.log("popup.js.changeStreamStatus.streamStatus=" + streamStatus);
 	if (streamStatus == "off") {
-		streamStatus = "on"
-		btnStartStream.value = "on"
-		btnStartStream.innerText = "Stop stream audio"
+		btnStartStream.value = "on";
+		btnStartStream.innerText = "Stop stream audio";
 	} else {
-		streamStatus = "off"
-		btnStartStream.value = "off"
-		btnStartStream.innerText = "Start stream audio"			
+		btnStartStream.value = "off";
+		btnStartStream.innerText = "Start stream audio";	
 	}
-}
-		
+	otherWindows.streamStatus = btnStartStream.value
+}	

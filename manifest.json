@@ -18,7 +18,8 @@
 
   "background": {
 	"scripts": [
-      "background/background.js"
+      "background/background.js",
+	  "background/adpcm.js"
     ]
   },
 
