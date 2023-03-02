@@ -1,10 +1,13 @@
-# Browser extension to play IP cameras ADPCM stream
+# Browser extension to play IP cameras ADPCM audio stream
 This is browser extension can play audio stream from chinese IP cameras. I don't have the list of compatible IP cameras but if your camera audio URL contains audiostream.cgi like this
 
 http://\<ip\>:81/audiostream.cgi?user=\<username\>&pwd=\<password\>&streamid=0&filename=
 
-this extension may works in your case.
+my extension may works in your case. 
 
+Such camera stream audio as ADPCM chunks (544 bytes each). Furthermore each chunks has 32 bytes header and others 512 bytes contains ADPCM raw data. This is not standard structures so it is not possible to play this audio stream using standard players like VLC.
+
+# Requirenments
 Extension only works with Mozilla Firefox (at least 110.0.1 version).
 
 Based on
