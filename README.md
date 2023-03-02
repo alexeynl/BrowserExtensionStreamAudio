@@ -16,5 +16,6 @@ Extension now only works with Mozilla Firefox (at least 110.0.1 version).
 https://github.com/smartin015/KaicongWiFiCameraControl
 https://github.com/alexeynl/DoorbellControlPython
 2. https://stackoverflow.com/a/20478525/6612987 (https://gist.github.com/revolunet/e620e2c532b7144c62768a36b8b96da2)
-3. https://4pda.to/forum/index.php?showtopic=807259&view=findpost&p=87441480
-4. https://gist.github.com/jaames/c837fb87a6a5585d47baa1b8e2408234
+3. https://developer.mozilla.org/en-US/docs/Web/API/AudioBuffer
+4. https://4pda.to/forum/index.php?showtopic=807259&view=findpost&p=87441480
+5. https://gist.github.com/jaames/c837fb87a6a5585d47baa1b8e2408234
