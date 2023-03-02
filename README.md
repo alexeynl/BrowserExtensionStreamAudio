@@ -3,7 +3,7 @@ This is browser extension can play audio stream from chinese IP cameras. I don't
 
 http://\<ip\>:81/audiostream.cgi?user=\<username\>&pwd=\<password\>&streamid=0&filename=
 
-this extension may works in you case.
+this extension may works in your case.
 
 Extension only works with Mozilla Firefox (at least 110.0.1 version).
 
