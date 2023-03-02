@@ -8,7 +8,7 @@ http://\<ip\>:81/audiostream.cgi?user=\<username\>&pwd=\<password\>&streamid=0&f
 my extension may works in your case.
 
 # Compatibility
-Extension now only works with Mozilla Firefox (at least 110.0.1 version).
+Extension now only works with Mozilla Firefox (at least 110.0.1 version). I'm not able to make this work for Chromium based browsers: fetch API can't work with non-HTTP respose that camera send (datails here https://stackoverflow.com/questions/75621371/processing-non-standard-http-response-in-chomium-based-browsers-using-javascript).
 
 # Based on
 
