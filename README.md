@@ -5,12 +5,12 @@ http://\<ip\>:81/audiostream.cgi?user=\<username\>&pwd=\<password\>&streamid=0&f
 
 my extension may works in your case. 
 
-Such camera stream audio as ADPCM chunks (544 bytes each). Furthermore each chunks has 32 bytes header and others 512 bytes contains ADPCM raw data. This is not standard structures so it is not possible to play this audio stream using standard players like VLC.
+Such cameras stream audio as ADPCM chunks (544 bytes each). Furthermore each chunks has 32 bytes header and others 512 bytes contains audio (ADPCM) raw data. This is not standard structures so it is not possible to play this audio stream using standard players like VLC.
 
-# Requirenments
-Extension only works with Mozilla Firefox (at least 110.0.1 version).
+# Compatibility
+Extension now only works with Mozilla Firefox (at least 110.0.1 version).
 
-Based on
+#Based on
 
 1. http://www.instructables.com/id/Hack-a-30-WiFi-Pan-Tilt-Camera-Video-Audio-and-Mot/
 https://github.com/smartin015/KaicongWiFiCameraControl
