@@ -1,7 +1,7 @@
 # BrowserExtensionStreamAudio
 This is browser extension to play audio stream from chinese IP cameras. I don't have the list of compatible IP cameras but if your camera audio URL contains audiostream.cgi like this
 
-http://<ip>:81/audiostream.cgi?user=<username>&pwd=<password>&streamid=0&filename=
+http://\<ip\>:81/audiostream.cgi?user=<username>&pwd=<password>&streamid=0&filename=
 
 you can try this extension.
 
