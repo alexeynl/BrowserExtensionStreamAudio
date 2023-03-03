@@ -4,7 +4,7 @@
   "version": "1.0",
 
   "description": "Get audio from IP camera/doorbell.",
-  "homepage_url": "https://github.com/smartin015/KaicongWiFiCameraControl",
+  "homepage_url": "https://github.com/alexeynl/BrowserExtensionStreamAudio",
   "icons": {
     "48": "icons/webcam-48.png"
   },
@@ -33,5 +33,11 @@
     "beasts/frog.jpg",
     "beasts/turtle.jpg",
     "beasts/snake.jpg"
-  ]
+  ],
+  
+   "browser_specific_settings": {
+    "gecko": {
+      "id": "alexeynl@bk.ru"
+    }
+  }
 }

@@ -12,7 +12,7 @@ function startStreamAudio (audioStreamURL) {
 	console.log("backgroud script streamAudio=>>");
 	console.log("audioStreamURL=" + audioStreamURL);
 	window.audioStreamURL = audioStreamURL;
-	console.log("streamStatus=" + streamStatus);
+	//console.log("streamStatus=" + streamStatus);
 	(async () => {
 		let response = await fetch(audioStreamURL);
 		const reader = response.body.getReader();
@@ -27,27 +27,27 @@ function startStreamAudio (audioStreamURL) {
 			//break;
 			//}
 			let audioChunk = new Uint8Array(value);
-			console.log('Audio chunk:');
-			console.log(audioChunk);
+			//console.log('Audio chunk:');
+			//console.log(audioChunk);
 
 			//Removing header from every piece of audio data
 			adpcmRawChunk = audioChunk.slice(32,544);
-			console.log('Adpcm raw chunk:');
-			console.log(adpcmRawChunk);
+			//console.log('Adpcm raw chunk:');
+			//console.log(adpcmRawChunk);
 
 			//Device streams ADPCM audio, convert every piece to PCM
 			var pcmChunk = decodeAdpcm(adpcmRawChunk);
 
 			
 			audioStack.push(pcmChunk);
-			console.log("audioStack");
-			console.log(audioStack);
-			if ((init!=0) || (audioStack.length > 10)) { // make sure we put at least 10 chunks in the buffer before starting
+			//console.log("audioStack");
+			//console.log(audioStack);
+			if ((init!=0) || (audioStack.length > 15)) { // make sure we put at least 10 chunks in the buffer before starting
 				init++;
 				scheduleBuffers();
 			}
 			receivedLength += audioChunk.length;
-			console.log(`Received ${receivedLength}`);
+			//console.log(`Received ${receivedLength}`);
 		}
 		
 
@@ -70,16 +70,16 @@ function scheduleBuffers() {
 			for (let i = 0; i < buffer.length; i++) {
 				nowBuffering[i] = audioBuffer[i];
 			}
-			console.log("nowBuffering");
-			console.log(nowBuffering);	
+			//console.log("nowBuffering");
+			//console.log(nowBuffering);	
 			// set the buffer in the AudioBufferSourceNode
-			console.log("bufferSource");
-			console.log(bufferSource);
+			//console.log("bufferSource");
+			//console.log(bufferSource);
 			bufferSource.buffer = buffer;
 
 		bufferSource.connect(context.destination);
 		if (nextTime == 0)
-			nextTime = context.currentTime + 0.05;  /// add 50ms latency to work well across systems - tune this if you like
+			nextTime = context.currentTime + 0.10;  /// add 50ms latency to work well across systems - tune this if you like
 		bufferSource.start(nextTime);
 		nextTime+=bufferSource.buffer.duration; // Make the next buffer wait the length of the last buffer before being played
 	};
