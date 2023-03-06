@@ -10,6 +10,15 @@ my extension may works in your case.
 # Compatibility
 Extension now only works with Mozilla Firefox (at least 110.0.1 version). I'm not able to make this work for Chromium based browsers: fetch API can't work with non-HTTP respose that camera send (details here https://stackoverflow.com/questions/75621371/processing-non-standard-http-response-in-chomium-based-browsers-using-javascript).
 
+# Insallation
+
+1. Dowload extenstion package - *.xpi file.
+2. Open Mozilla Firefox.
+3. In the address bar open the page:
+about:addons
+4. On the right from "Manage Your Extensions" click on gear button and chose "Install Add-on from file".
+5. Choose downloaded *.xpi extension package.
+
 # Based on
 
 1. http://www.instructables.com/id/Hack-a-30-WiFi-Pan-Tilt-Camera-Video-Audio-and-Mot/
