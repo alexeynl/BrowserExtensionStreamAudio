@@ -1,7 +1,6 @@
 
 let form = document.forms.audioStreamSettings;
 let inputAudioStreamURL = form.elements.audioStreamURL;
-let inputAudioChunksLimit = form.elements.audioChunksLimit;
 let btnStartStream = form.elements.startStream;
 //let streamStatus = btnStartStream.value;
 var otherWindows = chrome.extension.getBackgroundPage();
@@ -22,7 +21,6 @@ btnStartStream.addEventListener('click', () => {
 	otherWindows.startStreamAudio(inputAudioStreamURL.value);
 	changeStreamStatus();
 	let audioStreamURL = inputAudioStreamURL.value;
-	let audioChunksLimit = inputAudioChunksLimit.value;
 
 })
 

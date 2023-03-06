@@ -57,6 +57,7 @@ function startStreamAudio (audioStreamURL) {
 function scheduleBuffers() {
 	
 	while (audioStack.length) {
+		console.log("audioStack.length=" + audioStack.length);
 		var audioBuffer = audioStack.shift();
 		
 		var buffer = context.createBuffer(
@@ -79,7 +80,7 @@ function scheduleBuffers() {
 
 		bufferSource.connect(context.destination);
 		if (nextTime == 0)
-			nextTime = context.currentTime + 0.10;  /// add 50ms latency to work well across systems - tune this if you like
+			nextTime = context.currentTime + 0.01;  /// add 50ms latency to work well across systems - tune this if you like
 		bufferSource.start(nextTime);
 		nextTime+=bufferSource.buffer.duration; // Make the next buffer wait the length of the last buffer before being played
 	};
