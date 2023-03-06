@@ -18,7 +18,7 @@ Extension now only works with Mozilla Firefox (at least 110.0.1 version). I'm no
 about:addons
 4. On the right from "Manage Your Extensions" click on gear button and chose "Install Add-on from file".
 5. Choose downloaded *.xpi extension package from you file system.
-6. Confirm add extension to you browser.
+6. Confirm to add extension to you browser.
 
 # Based on
 
