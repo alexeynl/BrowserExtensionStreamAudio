@@ -12,7 +12,7 @@ Extension now only works with Mozilla Firefox (at least 110.0.1 version). I'm no
 
 # Insallation
 
-1. Dowload extenstion package - *.xpi file.
+1. Download extenstion package - *.xpi file.
 2. Open Mozilla Firefox.
 3. In the address bar open the page:
 about:addons
